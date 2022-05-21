@@ -1,0 +1,40 @@
+/*********************************************
+ * OPL 20.1.0.0 Data
+ * Author: Gabriel Garcia
+ * Creation Date: 29/04/2021 at 21:00:00
+ *********************************************/
+NH = 168; 
+NB = 5;  
+NT = 4;
+
+SheetConnection sheet("Dados2.xlsx");
+Et from SheetRead(sheet,"'Dados'!B2:E169");
+Vt from SheetRead(sheet,"'Dados'!G2:J169");
+Nt to SheetWrite(sheet,"SEMANA"); 
+Hb to SheetWrite(sheet,"BOMB");
+Ceh from SheetRead(sheet,"'Dados'!L2:L169");
+Cbh from SheetRead(sheet,"'Dados'!N2:R169");
+				
+Fb = [210.0, 210.0, 210.0, 219.0, 219.0]; // "Media" estimada; características distintas entre bombas podem ser incorporadas 
+Nit = [9000.0, 5000.0, 3000.0, 1625.0]; // m3
+Ntmin = [0.1, 0.1, 0.1, 0.1];// Percentual do nível do tanque
+Ntmax = [0.9, 0.9, 0.9, 0.9];
+Ct = [18000.0, 10000.0, 6000.0, 3250.0];
+
+k = 1000000;
+
+alfa = 0.25;
+beta = 0.75;
+
+Bat = [[0, 1, 0, 0],
+	   [0, 1, 0, 0],
+	   [0, 1, 0, 0],
+	   [0, 0, 1, 1],
+	   [0, 0, 1, 1]];
+					   
+// Acrescentar as bombas de saida dos tanques para as residencias					   
+But = [[1, 0, 0, 0],
+	   [1, 0, 0, 0],
+	   [1, 0, 0, 0],
+	   [0, 1, 0, 0],
+	   [0, 1, 0, 0]];
